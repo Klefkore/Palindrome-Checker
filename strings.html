@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--Emily's Palindrome checker -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- name on tab-->
+    <title>Palindrome Checker</title>
+    <!--style of page using css-->
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+             'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /*text font*/
+            text-align: center; /*where the text will be placed, in this case the center*/
+            align-items: center;/*so everything inside is aligned in the center*/
+            margin-top: 200px; /* space between container and searchbar */
+            background-color: #ae6d6da2;
+        }
+        .container {
+            width: 500px; /* size of container width wise*/
+            height: 200px; /* size of container height wise*/
+            text-align: center; /*where the text will be ... aligned*/
+            background-color: #f1b5b5; /*... background color...*/
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* the shadow around the box to give it more depth*/ 
+            display: inline-block; /* inline block for the container*/
+            border-radius: 15px; /*nice and rounded edges*/
+
+        }
+
+        #tomato {
+            background-color: #d09ccb; 
+            border: none; /* no border */
+            color: white; /* white text color */
+            padding: 10px 25px; /* padding inside the button */
+            text-align: center; /* center text alignment.. */
+            display: inline-block; /* inline block for button */
+            margin: 10px 0; /* margin around the button */
+            cursor: pointer; /* pointer cursor on hover */
+            border-radius: 5px; /* rounded corners */
+        }
+
+        #tomato:hover {
+            background-color: #b278b3; /*background color of the button once the mouse is on it*/
+        }
+
+    </style>
+</head>
+<body>
+    <!-- functionality of page using js using while, if and else and pop-up alerts-->
+    <div class="container">
+        <!--main header-->
+        <h1>Palindrome Checker</h1>
+        <!--button text and name of button-->
+        <button id="tomato" onclick="checkPalindrome()">Check a String</button>
+    </div>
+
+    <script>
+        //function to check if a word is a palindrome
+        function checkPalindrome() {
+            //variable to control the loop
+            let continueLoop = true;
+            //loop to ask user for words
+            while (continueLoop) {
+                //so user can enter a string
+                let userInput = prompt("Enter a string (or press Cancel to stop):");
+                //if the user cancels the prompt, break the loop
+                if (userInput === null) {
+                    continueLoop = false;
+                    break;
+                }
+                //suppose to remove non alphanumeric characters and convert to lowercase...
+                let cleanedInput = userInput.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+                //..suppose to check if the string is the same forwards and backwards
+                let reversedInput = cleanedInput.split('').reverse().join('');
+
+                if (cleanedInput === reversedInput) {
+                //show message that word is a palindrome
+                    alert(`"${userInput}" SUCCESS! This is a palindrome!`);
+                } else {
+                //show  message that word is not a palindrome
+                    alert(`"${userInput}" Sadly, this isn't a palindrome.`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
